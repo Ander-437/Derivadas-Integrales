@@ -1,0 +1,390 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(25, 25, 25);
+}
+
+header {
+    position: relative;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: rgb(24, 24, 69);
+    margin-bottom: 60px;
+}
+
+#titulo {
+    text-align: center;
+}
+
+#ayuda {
+    position: absolute;
+    right: 20px;
+    border-radius: 15px;
+    width: 30px;
+    height: 30px;
+}
+
+.panelAyuda {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.7);
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.panelActivo {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.cuadroAyuda {
+    background-color: #222;
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+    border: 1px solid rgb(0, 205, 0);
+    width: 500px;
+    height: 500px;
+    max-width: 90%;
+    display: flex;
+    flex-direction: column;
+
+    transform: translateY(-50px);
+    transition: transform 0.3s ease;
+}
+
+.listaAyuda {
+    text-align: justify;
+    font-size: 17px;
+    margin: 0;
+    padding: 20px 30px;
+}
+
+.panelFooter {
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.panelActivo .cuadroAyuda {
+    transform: translateY(0);
+}
+
+#main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 85px;
+    margin: 25px;
+}
+
+#seleccion {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+#derivada, #integral {
+    position: relative;
+    width: 150px;
+    height: 50px;
+    font-size: 1.5rem;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    text-shadow: 0px 1px 2px rgba(0,0,0,0.5);
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+
+
+#derivada {
+    background: #00b7ff;
+    user-select: none;
+    box-shadow: 0px 0px 40px rgba(0, 221, 255, 0.4);
+}
+
+#derivada.DerOn {
+    box-shadow: 
+            0 0 10px #00ddff,
+            0 0 20px #00ddff,
+            0 0 40px #0088ff;
+
+}
+
+.DerOn {
+    transform: scale(1.1) translateY(-5px);
+    background: #00e1ff;
+}
+
+#integral {
+    background: #ff3366;
+    user-select: none;
+    box-shadow: 0px 0px 40px rgba(255, 51, 102, 0.4);
+}
+
+#integral.IntOn {
+    box-shadow: 
+            0 0 10px #ff3366,
+            0 0 20px #ff3366,
+            0 0 40px #cc0033;
+}
+
+.IntOn {
+    transform: scale(1.1) translateY(-5px);
+    background: #ff4d79;
+
+}
+
+.seleccionado {
+    transform: scale(1.3);
+    box-shadow: 0px 0px 10px black;
+}
+
+.noSeleccionado {
+    transform: scale(0.9);
+}
+
+#operacion {
+    background-color: #efefef;
+    border-radius: 50px;
+    padding: 1px 15px;
+    display: flex;
+    max-width: 800px;
+    height: 200px;
+    align-items: center;
+    box-shadow: 
+        inset 0px 0px 30px rgba(0, 0, 0, 0.6);
+}
+
+#operator1 .der {
+    transform: scaleX(-1);
+    width: 60px;
+    height: 100px;
+}
+
+#operator1 .int{
+    width: 60px;
+    height: 100px;
+}
+
+#operator2{
+    font-size: 5rem;
+    display: flex;
+}
+
+#operator2 .der {
+    width: 60px;
+    height: 100px;
+}
+
+#operator2 .d {
+    margin-left: -15px;
+}
+
+#ecuacion {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 650px;
+    transition: all 2s ease;
+}
+
+#funcion, #nuevaFuncion {
+    box-shadow: 
+        5px 5px 15px rgba(0, 0, 0, 0.6);
+    background-color: #dfdfdf;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin: 0 10px;
+
+    box-sizing: border-box;
+    max-width: 600px;
+    padding: 0px;
+    overflow-x: auto;
+}
+
+#nuevaFuncion {
+    transition: all 0.3s ease;
+}
+
+#nuevaFuncion:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 30px cyan;
+}
+
+.termino {
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+
+.numero {
+    font-size: 2.5rem;
+    height: 46px;
+    border: 2px solid gray;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 5px;
+    text-align: center;
+    box-sizing: content-box;
+    width: 1.5ch;
+}
+.mas {
+    font-size: 2rem;
+    width: 30px;
+    height: 50px;
+    margin-left: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 5px;
+}
+
+
+#plus, #minus {
+    color: white;
+    font-size: 1.7rem;
+    min-width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid black;
+    border-radius: 20px;
+    margin: 12px;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.3s ease;
+}
+
+#plus {
+    background-color: rgb(0, 205, 0);
+}
+
+#minus {
+    background-color: rgb(205, 0, 0);
+    display: none;
+}
+
+
+
+#plus:hover, #minus:hover {
+    transform: scale(1.2)  translateY(-7px);
+    box-shadow: 2px 2px 5px gray;
+}
+
+
+#solve {
+    display: flex;
+    color: white;
+    border: none;
+    background-image: linear-gradient(
+        150deg,
+        #9500ff,
+        #09f,
+        #00DDFF);
+    border-radius: 8px;
+    box-shadow: 0px 0px 30px #09f;
+    font-size: 1.5rem;
+    padding: 4px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+#solve span {
+    background-color: #111;
+    padding: 16px 24px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+#solve span:hover {
+    background: none;
+}
+
+.solveMouse {
+    transform: scale(1.2) translateY(-5px);
+}
+
+
+.restart {
+    display: none;
+    position: relative;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    color: #9d0;
+    background-color: transparent;
+    border: 2px solid #9d0;
+    border-radius: 8px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: color 0.4s ease;
+    z-index: 1;
+
+}
+
+.restart::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%; 
+    height: 100%;
+    background-color: #9d0;
+    transition: width 0.4s ease;
+    z-index: -1;
+}
+
+.restartOn {
+    transform: scale(1.1);
+    color: white;
+}
+
+.restart:hover::before {
+    width: 100%;
+} 
+
+.answerSection {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.copiar {
+    background-color: red;
+    border-radius: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+footer {
+    background-color: rgb(24, 24, 69);
+    height: 50px;
+}

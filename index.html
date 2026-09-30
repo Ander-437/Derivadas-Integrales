@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Derivadas e Integrales</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1 id="titulo">Derivadas e Integrales</h1>
+        <button id="ayuda">?</button>
+    </header>
+    <div class="panelAyuda">
+        <section class="cuadroAyuda">
+            <h2>Cómo utilizar ésta página:</h2>
+            <ol class="listaAyuda">
+                <li>Elige la operación que quieras realizar (derivada/integral).</li>
+                <li>Escribe tu función en cada input.</li>
+                <li>Usa el botón de agregar o eliminar términos cuando lo necesites.</li>
+                <li>Presiona "Resolver" para obtener tu resultado.</li>
+                <br>
+            </ol>
+            <p>Si lo necesitas, puedes borrar lo que hayas escrito con el botón "reiniciar."</p>
+            <p>¡Recuerda escribir solo números!</p>
+            <div class="panelFooter">
+                <button id="cerrarPanel">Entendido</button>
+            </div>
+
+        </section>
+    </div>
+
+    <div id="main">
+        <div id="seleccion">
+            <button id="derivada">Derivada</button>
+            <button id="integral">Integral</button>
+        </div>
+
+        <button class="restart">Reiniciar</button>
+        
+        <article id="operacion">
+            <span id="operator1">
+            </span>
+            <div id="ecuacion">
+                <section id="funcion">
+                </section>
+                <span id="plus">+</span>
+                <span id="minus">-</span>
+            </div>
+            <span id="operator2"></span>
+        </article>
+
+        <div>
+            <button id="solve"><span>Resolver</span></button>
+        </div>
+    </div>
+
+    <footer>
+    </footer>
+    
+    <script src="index.js"></script>
+</body>
+</html>
